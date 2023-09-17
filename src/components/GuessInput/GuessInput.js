@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput() {
+function GuessInput({ handleNewGuess }) {
   const [guess, setGuess] = React.useState("");
 
   return (
@@ -8,8 +8,8 @@ function GuessInput() {
       className="guess-input-wrapper"
       onSubmit={(e) => {
         e.preventDefault();
-        console.log({ guess });
         setGuess("");
+        handleNewGuess({ label: guess, key: crypto.randomUUID() });
       }}
     >
       <label htmlFor="guess-input">Enter guess:</label>
@@ -21,7 +21,7 @@ function GuessInput() {
         pattern="^[A-Z]{5}$"
         title={"Must be 5 uppercase letters"}
         onChange={(e) => {
-          setGuess(e.target.value.toUpperCase());
+          setGuess(e.target.value.toUpperCase().slice(0, 5));
         }}
       />
     </form>
