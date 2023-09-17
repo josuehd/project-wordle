@@ -13,15 +13,18 @@ console.info({ answer });
 function Game() {
   const [Guesses, setGuesses] = React.useState([]);
 
-  function handleNewGuess(guess) {
-    const nextGuess = [...Guesses, guess];
-    setGuesses(nextGuess);
+  function handleSubmitGuess(guess) {
+    const nextGuess = {
+      value: guess,
+      id: crypto.randomUUID(),
+    };
+    setGuesses([...Guesses, nextGuess]);
   }
 
   return (
     <>
       <GuessResults Guesses={Guesses} />
-      <GuessInput handleNewGuess={handleNewGuess} />
+      <GuessInput handleSubmitGuess={handleSubmitGuess} />
     </>
   );
 }
