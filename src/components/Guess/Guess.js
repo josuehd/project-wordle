@@ -9,7 +9,7 @@ function Guess({ value, answer }) {
     <>
       <p className="guess">
         {range(5).map((num) => (
-          <span key={num} className={`cell ${result?.[num]?.status}`}>
+          <span key={num} className={`cell ${result?.[num]?.status ?? ""}`}>
             {value?.charAt(num)}
           </span>
         ))}
