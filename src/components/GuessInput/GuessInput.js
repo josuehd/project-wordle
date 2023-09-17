@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ handleSubmitGuess }) {
+function GuessInput({ handleSubmitGuess, disabled }) {
   const [tentativeGuess, setTentativeGuess] = React.useState("");
 
   return (
@@ -20,6 +20,7 @@ function GuessInput({ handleSubmitGuess }) {
         value={tentativeGuess}
         pattern="^[A-Z]{5}$"
         title={"Must be 5 uppercase letters"}
+        disabled={disabled}
         onChange={(e) => {
           setTentativeGuess(e.target.value.toUpperCase().slice(0, 5));
         }}
